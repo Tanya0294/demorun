@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizGen AI - AI-Powered Quiz Generator for Teachers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Login/Signup Popup Modal -->
+<div id="authModal" class="auth-modal">
+    <div class="auth-modal-content">
+        <div class="auth-header">
+            <h2>Welcome to QuizGen AI</h2>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="auth-body">
+            <form id="authForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <p>Already have an account? <a href="#" onclick="toggleForm()">Log In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>QuizGen<span>AI</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-secondary login-btn">Log In</button>
+                <button class="btn btn-primary signup-btn">Sign Up</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Generate Perfect Quizzes in Seconds</h1>
+                <p>Save hours of preparation time with our AI-powered quiz generator. Create customized, curriculum-aligned quizzes with just a few clicks.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large">Try For Free</button>
+                    <button class="btn btn-outline btn-large">See Demo</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/600x400" alt="Quiz Generator Demo">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features for Educators</h2>
+                <p>Everything you need to create engaging quizzes quickly and effectively</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>AI-Powered Questions</h3>
+                    <p>Generate curriculum-aligned questions instantly across any subject area</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Custom Difficulty Levels</h3>
+                    <p>Easily adjust question difficulty from easy to challenging</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Instant Answer Keys</h3>
+                    <p>Every quiz comes with detailed answer keys to save grading time</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Multiple Export Options</h3>
+                    <p>Download as PDF, Word, Google Docs or share directly with students</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Quiz History & Saving</h3>
+                    <p>Save and reuse your best quizzes for future classes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Learning Objectives</h3>
+                    <p>Tag quizzes with specific learning objectives for better targeting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quiz-generator">
+        <div class="container">
+          <div class="section-header">
+            <h2>Try Our Quiz Generator</h2>
+            <p>See how easy it is to create the perfect quiz</p>
+          </div>
+          
+          <div class="quiz-generator-content">
+            <form class="quiz-form">
+              
+              <div class="form-group">
+                <label for="topic">Topic</label>
+                <input type="text" id="topic" placeholder="e.g., Photosynthesis, World War II, Fractions">
+              </div>
+      
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="questions">Number of Questions</label>
+                  <div class="number-input">
+                    <button type="button" class="decrease">-</button>
+                    <input type="number" id="questions" min="1" max="50" value="10">
+                    <button type="button" class="increase">+</button>
+                  </div>
+                </div>
+      
+                <div class="form-group">
+                  <label>Difficulty Level</label>
+                  <div class="difficulty-selector">
+                    <label class="difficulty-option">
+                      <input type="radio" name="difficulty" value="easy" checked>
+                      <span class="difficulty-label easy">Easy</span>
+                    </label>
+                    <label class="difficulty-option">
+                      <input type="radio" name="difficulty" value="medium">
+                      <span class="difficulty-label medium">Medium</span>
+                    </label>
+                    <label class="difficulty-option">
+                      <input type="radio" name="difficulty" value="hard">
+                      <span class="difficulty-label hard">Hard</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="form-group">
+                <label>Question Types</label>
+                <div class="question-type-selector">
+                  <label class="question-type-option">
+                    <input type="checkbox" name="question-type" value="multiple-choice" checked>
+                    <span class="question-type-label">Multiple Choice</span>
+                  </label>
+                  <label class="question-type-option">
+                    <input type="checkbox" name="question-type" value="true-false">
+                    <span class="question-type-label">True/False</span>
+                  </label>
+                  <label class="question-type-option">
+                    <input type="checkbox" name="question-type" value="short-answer">
+                    <span class="question-type-label">Short Answer</span>
+                  </label>
+                </div>
+              </div>
+      
+              <div class="form-group">
+                <label for="learning-objective">Learning Objectives <span class="optional">(Optional)</span></label>
+                <div class="tag-input">
+                  <input type="text" id="learning-objective" placeholder="Add learning objective and press Enter">
+                  <div class="tags-container">
+                    <!-- Tags will be dynamically added here -->
+                  </div>
+                </div>
+              </div>
+      
+              <button type="submit" class="btn btn-primary btn-large">Generate Quiz</button>
+      
+            </form>
+          </div>
+        </div>
+      </section>
+      
+                    
+                </div>
+                <div class="quiz-preview">
+                    <div class="quiz-preview-header">
+                      <h3>Preview</h3>
+                      <div class="preview-controls">
+                        <button class="btn btn-sm btn-secondary" id="toggle-answers">
+                          <i class="fas fa-eye"></i> <span>Show Answers</span>
+                        </button>
+                        <button class="btn btn-sm btn-outline" id="export-quiz">
+                          <i class="fas fa-download"></i> <span>Export</span>
+                        </button>
+                      </div>
+                    </div>
+                  
+                    <div class="quiz-content">
+                      <div class="quiz-loading-placeholder" id="quiz-placeholder">
+                        <p>Your generated quiz will appear here</p>
+                        <p class="small-text">Fill out the form and click <strong>"Generate Quiz"</strong></p>
+                      </div>
+                  
+                      <div id="quiz-questions" class="quiz-questions hidden">
+                        <!-- Dynamic questions will be injected here -->
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                  <section id="how-it-works" class="how-it-works">
+                    <div class="container">
+                      <div class="section-header">
+                        <h2>How QuizGen AI Works</h2>
+                        <p>Create perfect quizzes in three simple steps</p>
+                      </div>
+                      <div class="steps-grid">
+                        <div class="step-card">
+                          <div class="step-icon">1</div>
+                          <h3>Enter Your Topic</h3>
+                          <p>Specify your subject area, add optional learning objectives, and customize settings.</p>
+                        </div>
+                        <div class="step-card">
+                          <div class="step-icon">2</div>
+                          <h3>Generate Questions</h3>
+                          <p>Our AI creates tailored questions at your specified difficulty level.</p>
+                        </div>
+                        <div class="step-card">
+                          <div class="step-icon">3</div>
+                          <h3>Edit & Export</h3>
+                          <p>Review, make adjustments, and export in your preferred format.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  
+
+                  <section class="testimonials">
+                    <div class="container">
+                      <div class="section-header">
+                        <h2>Loved by Educators</h2>
+                        <p>See what teachers are saying about QuizGen AI</p>
+                      </div>
+                  
+                      <div class="testimonial-slider">
+                        <div class="testimonial-card active">
+                          <div class="testimonial-content">
+                            <p>"QuizGen AI has saved me hours every week. I can create engaging quizzes for my science classes in minutes instead of hours."</p>
+                          </div>
+                          <div class="testimonial-author">
+                            <div class="author-image">
+                              <img src="https://via.placeholder.com/60" alt="Sarah Johnson">
+                            </div>
+                            <div class="author-info">
+                              <h4>Sarah Johnson</h4>
+                              <p>High School Science Teacher</p>
+                            </div>
+                          </div>
+                        </div>
+                  
+                        <div class="testimonial-card">
+                          <div class="testimonial-content">
+                            <p>"The variety of questions it generates is impressive. My students find the quizzes challenging and engaging, and I love how much time it saves me."</p>
+                          </div>
+                          <div class="testimonial-author">
+                            <div class="author-image">
+                              <img src="https://via.placeholder.com/60" alt="Michael Rodriguez">
+                            </div>
+                            <div class="author-info">
+                              <h4>Michael Rodriguez</h4>
+                              <p>Middle School History Teacher</p>
+                            </div>
+                          </div>
+                        </div>
+                  
+                        <div class="testimonial-card">
+                          <div class="testimonial-content">
+                            <p>"As a department head, I've implemented QuizGen AI across our entire English department. The consistency and quality have improved our assessments dramatically."</p>
+                          </div>
+                          <div class="testimonial-author">
+                            <div class="author-image">
+                              <img src="https://via.placeholder.com/60" alt="Lisa Chen">
+                            </div>
+                            <div class="author-info">
+                              <h4>Lisa Chen</h4>
+                              <p>English Department Chair</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  
+                      <div class="testimonial-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                      </div>
+                    </div>
+                  </section>
+                  
+
+    <!-- Call To Action Section -->
+<section class="cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Transform Your Quiz Creation Process?</h2>
+        <p>Join thousands of educators saving time and creating better assessments with QuizGen AI.</p>
+        <a href="#" class="btn btn-primary btn-large">Start Creating Quizzes</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <i class="fas fa-brain"></i>
+          <h2>QuizGen<span>AI</span></h2>
+          <p>AI-Powered Quiz Generation for Educators</p>
+        </div>
+  
+        <div class="footer-links">
+          <div class="link-group">
+            <h3>Product</h3>
+            <ul>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Integrations</a></li>
+              <li><a href="#">Updates</a></li>
+            </ul>
+          </div>
+  
+          <div class="link-group">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Tutorials</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Webinars</a></li>
+            </ul>
+          </div>
+  
+          <div class="link-group">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Partners</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <p>&copy; 2025 <strong>QuizGen AI</strong>. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+    <script src="script.js"></script>
+</body>
+</html>
